@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My App</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: #0f0f0f;
+      color: #f0f0f0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #7c3aed, #06b6d4);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    p.subtitle {
+      margin-top: 0.5rem;
+      color: #888;
+      font-size: 1rem;
+    }
+
+    .card {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .card label {
+      display: block;
+      font-size: 0.85rem;
+      color: #888;
+      margin-bottom: 0.4rem;
+    }
+
+    .card input {
+      width: 100%;
+      padding: 0.6rem 0.9rem;
+      border-radius: 8px;
+      border: 1px solid #333;
+      background: #111;
+      color: #f0f0f0;
+      font-size: 1rem;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .card input:focus { border-color: #7c3aed; }
+
+    button {
+      margin-top: 1rem;
+      width: 100%;
+      padding: 0.75rem;
+      background: linear-gradient(90deg, #7c3aed, #06b6d4);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: opacity 0.15s;
+    }
+
+    button:hover { opacity: 0.85; }
+
+    #output {
+      margin-top: 1rem;
+      font-size: 1.1rem;
+      min-height: 1.5rem;
+      text-align: center;
+      color: #06b6d4;
+      font-weight: 500;
+    }
+
+    footer {
+      font-size: 0.78rem;
+      color: #555;
+    }
+
+    footer a {
+      color: #7c3aed;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Hello from <span>Epic Workflow</span></h1>
+    <p class="subtitle">This page was deployed automatically by your AI agent.</p>
+  </header>
+
+  <div class="card">
+    <label for="nameInput">What's your name?</label>
+    <input id="nameInput" type="text" placeholder="e.g. Dennis" autocomplete="off" />
+    <button onclick="greet()">Say Hello</button>
+    <div id="output"></div>
+  </div>
+
+  <footer>
+    Deployed via <a href="https://vercel.com" target="_blank" rel="noopener">Vercel</a>
+    &nbsp;·&nbsp;
+    Built with Epic Workflow AI
+  </footer>
+
+  <script>
+    function greet() {
+      const name = document.getElementById("nameInput").value.trim();
+      const output = document.getElementById("output");
+
+      if (!name) {
+        output.style.color = "#f87171";
+        output.textContent = "Please enter your name first!";
+        return;
+      }
+
+      output.style.color = "#06b6d4";
+      output.textContent = `👋 Hello, ${name}! Your app is live on Vercel.`;
+    }
+
+    // Allow pressing Enter to submit
+    document.getElementById("nameInput").addEventListener("keydown", (e) => {
+      if (e.key === "Enter") greet();
+    });
+  </script>
+
+</body>
+</html>
